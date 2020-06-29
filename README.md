@@ -15,7 +15,7 @@ We can serve the machine translation models in `nmt_inference_examples.ipynb` as
     
     - "SCB_1M-MT_OPUS+TBASE_en-th_spm-spm_32000-joined_v1.0"
 
-    from https://airesearch.in.th/releases/machine-translation-models/
+    from https://airesearch.in.th/releases/machine-translation-models/ or https://github.com/vistec-AI/model-releases/releases/tag/SCB_1M%2BTBASE_v1.0
 
     and put it under directory "/app/" 
 
