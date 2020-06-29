@@ -57,5 +57,6 @@ curl --location --request POST 'http://localhost/translate' \
 
 ## To-do
 
-[ ] Industry-grade productionization tutorials
-[ ] Cookie cutter templates for other models
+- [ ] Industry-grade productionization tutorials
+
+- [ ] Cookie cutter templates for other models
