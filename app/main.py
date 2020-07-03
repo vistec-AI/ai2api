@@ -1,7 +1,10 @@
 import os
+import torch
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fairseq.models.transformer import TransformerModel
+
+torch.set_num_threads(1)
 
 app = FastAPI()
 
