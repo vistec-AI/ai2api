@@ -9,22 +9,18 @@
                 "description": "Web App name must be unique DNS name worldwide"
             }
         },
-        "server_location": {
-            "defaultValue": "[resourceGroup().location]",
-            "type": "String",
-            "metadata":{
-                "description": "Location for all resources."
-            }
-        },
         "app_service_name": {
             "defaultValue": "",
-            "type": "String"
+            "type": "String",
+            "metadata":{
+                "description": "Name of the App Service"
+            }
         },
         "serverfarm_name": {
             "defaultValue": "",
             "type": "String",
             "metadata":{
-                "description": "Name of the Web Farm"
+                "description": "Name of the Server Farm"
             }
         },
         "SKU_name": {
@@ -81,13 +77,13 @@
             },
             "name": "[parameters('serverfarm_name')]",
             "apiVersion": "2016-03-01",
-            "location": "[parameters('server_location')]"
+            "location": "[resourceGroup().location]"
         },
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "name": "[parameters('sitename')]",
-            "location": "[parameters('server_location')]",
+            "location": "[resourceGroup().location]",
             "kind": "app,linux,container",
             "properties": {
                 "enabled": true,
@@ -125,7 +121,7 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sitename'), '/web')]",
-            "location": "[parameters('server_location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sitename'))]"
             ],
@@ -198,7 +194,7 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sitename'), '/', parameters('sitename'), '.azurewebsites.net')]",
-            "location": "[parameters('server_location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sitename'))]"
             ],
