@@ -4,19 +4,56 @@
     "parameters": {
         "sitename": {
             "defaultValue": "",
-            "type": "String"
+            "type": "String",
+            "metadata":{
+                "description": "Web App name must be unique DNS name worldwide"
+            }
         },
         "server_location": {
-            "defaultValue": "East Asia",
-            "type": "String"
+            "defaultValue": "[resourceGroup().location]",
+            "type": "String",
+            "metadata":{
+                "description": "Location for all resources."
+            }
         },
         "app_service_name": {
             "defaultValue": "",
             "type": "String"
         },
-        "app_service_plan_name": {
+        "serverfarm_name": {
             "defaultValue": "",
-            "type": "String"
+            "type": "String",
+            "metadata":{
+                "description": "Name of the Web Farm"
+            }
+        },
+        "SKU_name": {
+            "type": "String",
+            "defaultValue": "B3",
+            "metadata":{
+                "description": "SKU name, must be minimum B3"
+            }
+        },
+        "SKU_tier": {
+            "type": "String",
+            "defaultValue": "Basic",
+            "metadata":{
+                "description": "SKU tier, must be Basic"
+            }
+        },
+        "SKU_size": {
+            "type": "String",
+            "defaultValue": "B3",
+            "metadata":{
+                "description": "SKU size, must be minimum B3"
+            }
+        },
+        "SKU_family": {
+            "type": "String",
+            "defaultValue": "B",
+            "metadata":{
+                "description": "SKU family, must be minimum B3"
+            }
         }
     },
     "variables": {},
@@ -24,10 +61,10 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "sku": {
-                "name": "B3",
-                "tier": "Basic",
-                "size": "B3",
-                "family": "B",
+                "name": "[parameters('SKU_name')]",
+                "tier": "[parameters('SKU_tier')]",
+                "size": "[parameters('SKU_size')]",
+                "family": "[parameters('SKU_family')]",
                 "capacity": 1
             },
             "kind": "linux",
@@ -44,7 +81,7 @@
                 "hostingEnvironment": "[parameters('app_service_name')]"
 
             },
-            "name": "[parameters('app_service_plan_name')]",
+            "name": "[parameters('serverfarm_name')]",
             "apiVersion": "2016-03-01",
             "location": "[parameters('server_location')]",
             "dependsOn": [
@@ -74,7 +111,7 @@
                 "hostingEnvironmentProfile": {
                     "id": "[resourceId('Microsoft.Web/hostingEnvironments', parameters('app_service_name'))]"
                 },
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('app_service_plan_name'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_name'))]",
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
@@ -89,7 +126,7 @@
                 "redundancyMode": "None"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('app_service_plan_name'))]",
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarm_name'))]",
                 "[resourceId('Microsoft.Web/hostingEnvironments', parameters('app_service_name'))]"
             ]
         },
@@ -97,7 +134,7 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sitename'), '/web')]",
-            "location": "East Asia",
+            "location": "[parameters('server_location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sitename'))]"
             ],
@@ -170,12 +207,12 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sitename'), '/', parameters('sitename'), '.azurewebsites.net')]",
-            "location": "East Asia",
+            "location": "[parameters('server_location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sitename'))]"
             ],
             "properties": {
-                "siteName": "thai-mt-demo-api",
+                "siteName": "[parameters('site_name')]",
                 "hostNameType": "Verified"
             }
         }
