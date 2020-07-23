@@ -203,7 +203,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sitename'))]"
             ],
             "properties": {
-                "siteName": "[parameters('site_name')]",
+                "siteName": "[parameters('sitename')]",
                 "hostNameType": "Verified"
             }
         }
