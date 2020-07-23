@@ -3,6 +3,9 @@ Productionize NLP models trained on Pytorch by AIResearch.in.th
 
 This repository contains examples converting trained pytorch models to REST APIs using [fastapi](https://fastapi.tiangolo.com/) and [docker](https://www.docker.com/).
 
+<br>
+
+
 ## Getting Started with Machine Translation Models
 
 We can serve the machine translation models in `nmt_inference_examples.ipynb` as REST API on your machine with the following steps:
@@ -55,7 +58,18 @@ curl --location --request POST 'http://localhost/translate' \
 }'
 ```
 
-## To-do
+<br>
+
+## One-click deployment:
+
+Deploy our th→en, en→th Transformer BASE model trained on SCB-1M and MT-OPUS dataset to Azure:
+<a href="https://azuredeploy.net/?repository=https://github.com/vistec-AI/ai2api/az_deployment/TBASE.SCB-1M+MT-OPS.spm-spm.json" alt="Deploy to Azure" target="_blank" >
+
+   <img style="border-radius: 1%" src="https://azuredeploy.net/deploybutton.png"  width="157px" height="33px"/>
+</a>
+
+
+## To-do:
 
 - [ ] Industry-grade productionization tutorials
 
