@@ -63,7 +63,7 @@ curl --location --request POST 'http://localhost/translate' \
 ## One-click deployment:
 
 Deploy our th→en, en→th Transformer BASE model trained on SCB-1M and MT-OPUS dataset to Azure:
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/vistec-AI/ai2api/dev/az_deployment/TBASE.SCB-1M%2BMT-OPS.spm-spm.json" alt="Deploy to Azure" target="_blank" >
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvistec-AI%2Fai2api%2Fdev%2Faz_deployment%2FTBASE.SCB-1M%252BMT-OPS.spm-spm.json" alt="Deploy to Azure" target="_blank" >
 
    <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
