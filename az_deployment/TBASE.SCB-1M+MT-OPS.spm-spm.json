@@ -139,7 +139,7 @@
                     "hostingstart.html"
                 ],
                 "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "DOCKER|vistecai.azurecr.io/thai-mt-api:latest",
+                "linuxFxVersion": "DOCKER|docker.io/airesearchth/thai-mt-api:latest",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "httpLoggingEnabled": false,
