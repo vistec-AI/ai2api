@@ -89,7 +89,7 @@
                 "redundancyMode": "None"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('APP-app_service_plan_name'))]",
+                "[resourceId('Microsoft.Web/serverfarms', parameters('app_service_plan_name'))]",
                 "[resourceId('Microsoft.Web/hostingEnvironments', parameters('app_service_name'))]"
             ]
         },
