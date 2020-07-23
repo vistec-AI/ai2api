@@ -77,9 +77,7 @@
                 "isXenon": false,
                 "hyperV": false,
                 "targetWorkerCount": 0,
-                "targetWorkerSizeId": 0,
-                "hostingEnvironment": "[parameters('app_service_name')]"
-
+                "targetWorkerSizeId": 0
             },
             "name": "[parameters('serverfarm_name')]",
             "apiVersion": "2016-03-01",
